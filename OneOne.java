@@ -16,6 +16,7 @@ public class OneOne {
         double rasC300 = 0.115;
         double rasC400 = 0.2;
 
+        int typeCar;
         double allGsm;
         // переменные гсм для каждого типа авто
         double gsmC100;
@@ -31,20 +32,21 @@ public class OneOne {
 
 
         for (String car : cars) {
-            char[] chr = car.toCharArray();
+            typeCar = Integer.valueOf(car.substring(1,car.indexOf("_")));
+
             // ищем пробег каждого типа авто
-            switch (chr[1]) {
-                case '1':
+            switch (typeCar) {
+                case 100:
                     distC100 += distC100 + Integer.valueOf(car.substring(7));
                     break;
-                case '2':
-                    distC200 += distC200 + Integer.valueOf(car.substring(7, 9));
+                case 200:
+                    distC200 += distC200 + Integer.valueOf(car.substring(car.indexOf("-")+1,car.lastIndexOf("-")));
                     break;
-                case '3':
-                    distC300 += distC300 + Integer.valueOf(car.substring(7, 9));
+                case 300:
+                    distC300 += distC300 + Integer.valueOf(car.substring(car.indexOf("-")+1,car.lastIndexOf("-")));
                     break;
-                case '4':
-                    distC400 += distC400 + Integer.valueOf(car.substring(7, 9));
+                case 400:
+                    distC400 += distC400 + Integer.valueOf(car.substring(car.indexOf("-")+1,car.lastIndexOf("-")));
                     break;
             }
 
